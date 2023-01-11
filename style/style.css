@@ -1,0 +1,260 @@
+* {
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: hsl(222deg, 26%, 31%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body.theme-two {
+  background-color: hsl(0deg, 0%, 90%);
+}
+body.theme-two header {
+  color: hsl(60deg, 10%, 19%);
+}
+body.theme-two header .inputs {
+  background-color: hsl(0deg, 5%, 81%) !important;
+}
+body.theme-two header .inputs input {
+  background-color: hsl(25deg, 98%, 40%) !important;
+}
+body.theme-two .output {
+  background-color: hsl(0deg, 0%, 93%) !important;
+  color: #000;
+}
+body.theme-two .output .previous-operand {
+  color: rgba(167, 163, 163, 0.6);
+}
+body.theme-two .buttons {
+  background-color: hsl(0deg, 5%, 81%);
+}
+body.theme-two .buttons .del,
+body.theme-two .buttons .reset {
+  background-color: hsl(185deg, 42%, 37%);
+  color: hsl(0deg, 0%, 100%);
+  border-bottom: 4px solid hsl(185deg, 58%, 25%);
+}
+body.theme-two .buttons .del:hover,
+body.theme-two .buttons .reset:hover {
+  background-color: rgb(49, 179, 190);
+}
+body.theme-two .buttons .equal {
+  background-color: hsl(25deg, 98%, 40%);
+  color: hsl(0deg, 0%, 100%);
+  border-bottom: 4px solid hsl(25deg, 99%, 27%);
+}
+body.theme-two .buttons .equal:hover {
+  background-color: rgb(235, 105, 12);
+}
+
+body.theme-three {
+  background-color: hsl(268deg, 75%, 9%);
+}
+body.theme-three header {
+  color: hsl(52deg, 100%, 62%);
+}
+body.theme-three header .inputs {
+  background-color: hsl(268deg, 71%, 12%) !important;
+}
+body.theme-three header .inputs input {
+  background-color: hsl(176deg, 100%, 44%) !important;
+}
+body.theme-three .output {
+  background-color: hsl(268deg, 74%, 14%) !important;
+  color: hsl(52deg, 100%, 62%);
+}
+body.theme-three .output .previous-operand {
+  color: rgba(167, 163, 163, 0.6);
+}
+body.theme-three .buttons {
+  background-color: hsl(268deg, 74%, 14%) !important;
+}
+body.theme-three .buttons button {
+  color: hsl(52deg, 100%, 62%) !important;
+  background-color: hsl(268deg, 47%, 21%);
+  border-bottom: 4px solid hsl(290deg, 70%, 36%);
+  box-shadow: 0 2px -1px hsl(290deg, 70%, 36%);
+}
+body.theme-three .buttons button:hover {
+  background-color: hsl(281deg, 89%, 26%);
+}
+body.theme-three .buttons .del,
+body.theme-three .buttons .reset {
+  background-color: hsl(281deg, 89%, 26%);
+  color: hsl(0deg, 0%, 100%) !important;
+  border-bottom: 4px solid hsl(285deg, 91%, 52%);
+}
+body.theme-three .buttons .del:hover,
+body.theme-three .buttons .reset:hover {
+  background-color: hsl(285deg, 91%, 52%);
+}
+body.theme-three .buttons .equal {
+  background-color: hsl(176deg, 100%, 44%);
+  color: #000 !important;
+  border-bottom: 4px solid hsl(177deg, 92%, 70%);
+}
+body.theme-three .buttons .equal:hover {
+  background-color: hsl(177deg, 92%, 70%);
+}
+
+.calc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 550px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  color: hsl(0deg, 0%, 100%);
+  padding: 10px;
+}
+header .logo {
+  flex: 1;
+  font-size: 32px;
+  font-weight: bold;
+}
+header .theme-switch {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+header .theme-switch .text {
+  align-self: flex-end;
+}
+header .theme-switch .toggle {
+  width: 70px;
+  border-radius: 15px;
+}
+header .theme-switch .toggle .labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  font-size: 12px;
+}
+header .theme-switch .toggle .inputs {
+  width: 100%;
+  background-color: hsl(223deg, 31%, 20%);
+  padding: 3px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+header .theme-switch .toggle .inputs input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: hsl(6deg, 63%, 50%);
+  opacity: 0;
+}
+header .theme-switch .toggle .inputs input:hover {
+  cursor: pointer;
+}
+header .theme-switch .toggle .inputs input:checked {
+  opacity: 1;
+}
+
+.output {
+  background-color: hsl(224deg, 36%, 15%);
+  width: 98%;
+  min-height: 100px;
+  max-height: auto;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: right;
+  font-size: 28px;
+  color: hsl(0deg, 0%, 100%);
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.output .previous-operand {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 24px;
+}
+
+.buttons {
+  width: 98%;
+  background-color: hsl(224deg, 36%, 15%);
+  padding: 20px;
+  border-radius: 15px;
+}
+.buttons .grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  max-width: 100%;
+  grid-template-columns: repeat(4, 20%);
+  grid-template-rows: repeat(5, 60px);
+  grid-gap: 25px;
+}
+@media (max-width: 500px) {
+  .buttons .grid {
+    grid-gap: 10px;
+  }
+}
+.buttons .grid button {
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: hsl(221deg, 14%, 31%);
+  outline: none;
+  background-color: hsl(30deg, 25%, 89%);
+  border: none;
+  border-bottom: 4px solid hsl(28deg, 16%, 65%);
+  border-radius: 10px;
+  box-shadow: 0 2px -1px hsl(224deg, 28%, 35%);
+}
+.buttons .grid button:hover {
+  background-color: rgb(238, 236, 236);
+}
+@media (max-width: 500px) {
+  .buttons .grid button {
+    font-size: 18px;
+  }
+}
+.buttons .grid .span-two {
+  grid-column: span 2;
+}
+.buttons .grid .del,
+.buttons .grid .reset {
+  background-color: hsl(225deg, 21%, 49%);
+  color: hsl(0deg, 0%, 100%);
+  border-bottom: 4px solid hsl(224deg, 28%, 35%);
+}
+.buttons .grid .del:hover,
+.buttons .grid .reset:hover {
+  background-color: rgb(155, 168, 209);
+}
+.buttons .grid .equal {
+  background-color: hsl(6deg, 63%, 50%);
+  color: hsl(0deg, 0%, 100%);
+  border-bottom: 4px solid hsl(6deg, 70%, 34%);
+}
+.buttons .grid .equal:hover {
+  background-color: rgb(241, 82, 65);
+}/*# sourceMappingURL=style.css.map */

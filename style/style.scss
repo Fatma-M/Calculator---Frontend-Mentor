@@ -1,0 +1,299 @@
+@import "variables";
+
+* {
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: $Very-dark-blue-main;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body.theme-two {
+  background-color: $Light-gray-main-background;
+
+  header {
+    color: $Very-dark-grayish-yellow;
+    .inputs {
+      background-color: $Grayish-red-toggle-keypad !important;
+
+      input {
+        background-color: $Orange-key-toggle !important;
+      }
+    }
+  }
+
+  .output {
+    background-color: $Very-light-gray-screen-background !important;
+    color: #000;
+
+    .previous-operand {
+      color: rgba(167, 163, 163, 0.6);
+    }
+  }
+
+  .buttons {
+    background-color: $Grayish-red-toggle-keypad;
+
+    .del,
+    .reset {
+      background-color: $Dark-moderate-cyan-key-background;
+      color: $White;
+      border-bottom: 4px solid $Very-dark-cyan-key-shadow;
+
+      &:hover {
+        background-color: rgb(49, 179, 190);
+      }
+    }
+
+    .equal {
+      background-color: $Orange-key-toggle;
+      color: $White;
+      border-bottom: 4px solid $Dark-orange-key-shadow;
+
+      &:hover {
+        background-color: rgb(235, 105, 12);
+      }
+    }
+  }
+}
+
+body.theme-three {
+  background-color: $Very-dark-violet-background;
+
+  header {
+    color: $Light-yellow;
+    .inputs {
+      background-color: $Very-dark-violet-toggle-keypad-screen !important;
+
+      input {
+        background-color: $Pure-cyan-key-background-toggle !important;
+      }
+    }
+  }
+
+  .output {
+    background-color: $dark-violet-background !important;
+    color: $Light-yellow;
+
+    .previous-operand {
+      color: rgba(167, 163, 163, 0.6);
+    }
+  }
+
+  .buttons {
+    background-color: $dark-violet-background !important;
+
+    button {
+      color: $Light-yellow !important;
+      background-color: $Very-dark-violet-key-background;
+      border-bottom: 4px solid $Dark-magenta-key-shadow;
+      box-shadow: 0 2px -1px $Dark-magenta-key-shadow;
+      &:hover {
+        background-color: $Dark-violet-key-background;
+      }
+    }
+
+    .del,
+    .reset {
+      background-color: $Dark-violet-key-background;
+      color: $White !important;
+      border-bottom: 4px solid $Vivid-magenta-key-shadow;
+
+      &:hover {
+        background-color: $Vivid-magenta-key-shadow;
+      }
+    }
+
+    .equal {
+      background-color: $Pure-cyan-key-background-toggle;
+      color: #000 !important;
+      border-bottom: 4px solid $Soft-cyan-key-shadow;
+
+      &:hover {
+        background-color: $Soft-cyan-key-shadow;
+      }
+    }
+  }
+}
+
+.calc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 550px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  color: $White;
+  padding: 10px;
+
+  .logo {
+    flex: 1;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .theme-switch {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+    .text {
+      align-self: flex-end;
+    }
+
+    .toggle {
+      width: 70px;
+      border-radius: 15px;
+
+      .labels {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px;
+        font-size: 12px;
+      }
+
+      .inputs {
+        width: 100%;
+        background-color: $Very-dark-blue-toggle-keypad;
+        padding: 3px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+
+        input {
+          appearance: none;
+          height: 12px;
+          width: 12px;
+          border-radius: 50%;
+          background-color: $Red-key-background-toggle;
+          opacity: 0;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        input:checked {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.output {
+  background-color: $Very-dark-blue-screen;
+  width: 98%;
+  min-height: 100px;
+  max-height: auto;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: right;
+  font-size: 28px;
+  color: $White;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .previous-operand {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 24px;
+  }
+}
+
+.buttons {
+  width: 98%;
+  background-color: $Very-dark-blue-screen;
+  padding: 20px;
+  border-radius: 15px;
+
+  .grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: fit-content;
+    max-width: 100%;
+    // grid-template-columns: repeat(4, 100px);
+    grid-template-columns: repeat(4, 20%);
+    grid-template-rows: repeat(5, 60px);
+    grid-gap: 25px;
+
+    @media (max-width: 500px) {
+      grid-gap: 10px;
+    }
+
+    button {
+      cursor: pointer;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      color: $Very-dark-grayish-blue;
+      outline: none;
+      background-color: $Light-grayish-orange-key-background;
+      border: none;
+      border-bottom: 4px solid $Grayish-orange-key-shadow;
+      border-radius: 10px;
+      box-shadow: 0 2px -1px $dark-blue-key-shadow;
+
+      &:hover {
+        background-color: rgb(238, 236, 236);
+      }
+
+      @media (max-width: 500px) {
+        font-size: 18px;
+      }
+    }
+
+    .span-two {
+      grid-column: span 2;
+    }
+
+    .del,
+    .reset {
+      background-color: $dark-blue-key-background;
+      color: $White;
+      border-bottom: 4px solid $dark-blue-key-shadow;
+
+      &:hover {
+        background-color: rgb(155, 168, 209);
+      }
+    }
+
+    .equal {
+      background-color: $Red-key-background-toggle;
+      color: $White;
+      border-bottom: 4px solid $Dark-red-key-shadow;
+
+      &:hover {
+        background-color: rgb(241, 82, 65);
+      }
+    }
+
+    // .reset {
+    //   background-color: $dark-blue-key-background;
+    //   color: $White;
+    //   border-bottom: 4px solid $dark-blue-key-shadow;
+
+    //   &:hover {
+    //     background-color: rgb(155, 168, 209);
+    //   }
+    // }
+  }
+}
